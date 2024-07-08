@@ -1,0 +1,118 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  background-color: #2B4F8B;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.logoImg {
+  width: 379px;
+  margin-left: -124px;
+  margin-bottom: -98px;
+  margin-top: -102px;
+}
+
+#aboutText,
+#alertsText,
+#signinText,
+#signOutText {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 13px;
+  color: #2B4F8B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  width: 91px;
+  height: 36px;
+}
+
+.aboutContainer,
+.alertsContainer,
+.signinContainer,
+.signOutContainer {
+  background-color: #FFF;
+  width: 91px;
+  height: 36px;
+  border-radius: 15px;
+  display: inline-block;
+  margin-left: 15px;
+
+}
+
+.fa{
+  color:#FFF;
+}
+
+.right-links {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: flex-end; 
+}
+
+.right-links a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #2B4F8B;
+  padding: 10px 15px;
+  border-radius: 15px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 40px;
+}
+
+.right-links a:hover {
+  background-color: #ddd;
+  color: #2B4F8B;
+}
+
+@media screen and (max-width: 600px) {
+  .right-links {
+    gap: 10px;
+  }
+  
+  .right-links a {
+    width: 80px;
+    height: 35px;
+    padding: 8px 12px;
+  }
+}
+
+.topnav a {
+  padding: 0px;
+}
+.topnav a:hover {
+  background-color: transparent;
+}

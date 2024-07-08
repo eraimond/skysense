@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+          integrity="sha512-rengiT+uUF8jv53ixtmNkN82BVmX3YrMKb7P/TnuTfxBaHVsIqzWly/gYLnAGZVmWzgVms1yzKAoQ81NF+tYPQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./../style/style.css">
+    <title>SkySense - Sign Up</title>
+    <script type="text/javascript">
+        async function importHeaderAndFooter() {
+            const [headerContent, footerContent] = await Promise.all([
+                fetch('./components/header.html').then(res => res.text()),
+                fetch('./components/footer.html').then(res => res.text())
+            ]);
+
+            document.getElementById('header-navbar').innerHTML = headerContent;
+            document.getElementById('footer-placeholder').innerHTML = footerContent;
+        }
+
+        document.addEventListener('DOMContentLoaded', importHeaderAndFooter);
+    </script>
+</head>
+
+<body>
+    <div id="header-navbar"></div>
+
+    <div class="sign-up-container">
+        <h1>SIGN UP</h1>
+
+        <form id="sign-up-form" action="/add-user" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+
+            <button type="submit">Register</button>
+
+            <div id="error-message" style="color: red; display: none;"></div>
+        </form>
+
+    </div>
+
+    <div id="fillerContainerTwo"></div>
+    <div id="footer-placeholder"></div>
+
+</body>
+
+</html>

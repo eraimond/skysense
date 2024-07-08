@@ -1,0 +1,484 @@
+h1.header-for-now {
+  color: red;
+}
+
+body {
+  background-color: #4B6BAF !important;
+}
+
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#searchTextField {
+  padding: 8px;
+  font-size: 16px;
+  border: 2px solid #dfe1e5;
+  border-right: none;
+  border-radius: 24px 0 0 24px;
+  outline: none;
+  width: 300px;
+}
+
+.search-button {
+  padding: 8px 16px;
+  font-size: 16px;
+  border: 2px solid #dfe1e5;
+  border-left: none;
+  background-color: #f8f9fa;
+  color: #3c4043;
+  cursor: pointer;
+  border-radius: 0 24px 24px 0;
+  outline: none;
+}
+
+.search-button:hover {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  background-color: #f0f0f0;
+}
+
+.sign-in-container {
+  max-width: 400px;
+  margin: 50px auto;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 30px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sign-in-container img {
+  margin-bottom: 20px;
+}
+
+.sign-in-container h1 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.sign-in-container a {
+  color: #aaa;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.sign-in-container form {
+  margin-bottom: 20px;
+}
+
+.sign-in-container label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.sign-in-container input[type="text"],
+.sign-in-container input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+.sign-in-container button {
+  background-color: #177CB6;
+  color: #fff;
+  border: none;
+  padding: 5px 20px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.sign-in-container .keep-signed-in {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.sign-in-container .keep-signed-in input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.sign-in-container form,
+.sign-in-container .button-container {
+  margin-bottom: 0px;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.sign-in-container form button,
+.button-container button {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .sign-in-container {
+    max-width: 90%;
+  }
+}
+
+.sign-in-container a {
+  margin-bottom: 0px;
+}
+
+.sign-up-container {
+  max-width: 457px;
+  margin: 50px auto;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 30px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sign-up-container img {
+  margin-bottom: 20px;
+}
+
+.sign-up-container h1 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.sign-up-container a {
+  color: #aaa;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.sign-up-container label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.sign-up-container input[type="text"],
+.sign-up-container input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+.sign-up-container button {
+  background-color: #177CB6;
+  color: #fff;
+  border: none;
+  padding: 5px 20px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.sign-up-container .keep-signed-in {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.sign-up-container .keep-signed-in input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.sign-up-container form,
+.sign-up-container .button-container {
+  margin-bottom: 0px;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.sign-up-container form button,
+.button-container button {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .sign-up-container {
+    max-width: 90%;
+  }
+}
+
+.sign-up-container a {
+  margin-bottom: 0px;
+}
+
+.sign-up-container form {
+  margin-top: 15px;
+}
+
+.social-icon-container-facebook {
+  display: inline-block;
+  width: 110px;
+  height: 25px;
+  background-color: #4267B2;
+  border-radius: 5px;
+  text-align: center;
+  margin: 0 5px;
+}
+
+.social-icon-container-twitter {
+  display: inline-block;
+  width: 110px;
+  height: 25px;
+  background-color: #1DA1F2;
+  border-radius: 5px;
+  text-align: center;
+  margin: 0 5px;
+}
+
+.social-icon-container-google {
+  display: inline-block;
+  width: 110px;
+  height: 25px;
+  background-color: #DB4437;
+  border-radius: 5px;
+  text-align: center;
+  margin: 0 5px;
+}
+
+.carousel-inner {
+  height: 500px;
+}
+
+.carousel-item {
+  height: 100%;
+}
+
+.carousel-item img {
+  height: 100%;
+  object-fit: cover;
+}
+
+#map {
+  height: 500px !important;
+}
+
+.row-head {
+  background-color: #212529;
+}
+
+.row-good {
+  background-color: green;
+}
+
+.row-moderate {
+  background-color: #d8c51e;
+}
+
+.row-unhealthy-sensitive {
+  background-color: darkgoldenrod;
+}
+
+.row-unhealthy {
+  background-color: #cc0033;
+}
+
+.row-very-unhealthy {
+  background-color: purple;
+}
+
+.row-hazardous {
+  background-color: #7e0023;
+}
+
+#aqi-table {
+  margin-top: -40px;
+}
+
+.table {
+  color: white !important;
+  font-weight: bold;
+}
+
+.custom-container {
+  height: 200px;
+}
+
+#columnOneAboutPage,
+#columnTwoAboutPage {
+  padding: 20px;
+  border-radius: 5px;
+  margin: 10px 0;
+
+}
+
+#columnOneAboutPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  color: white;
+}
+
+#columnOneAboutPage h2 {
+  text-align: left;
+  font-weight: bold;
+  font-size: 40px;
+}
+
+#columnOneAboutPage p {
+  text-align: left;
+  font-size: 26px;
+}
+
+#containerAboutPageSeasons h2 {
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 40px;
+}
+
+#containerAboutPageSeasons p {
+  text-align: center;
+  font-size: 26px;
+  color: white;
+}
+
+div#middleImage {
+  margin-top: 100px;
+}
+
+.p-3.bg-light.border.border-secondary.rounded {
+  background-color: unset !important;
+  background: unset;
+  border: unset !important;
+}
+
+div#realTimeDataImage {
+  justify-content: center;
+  display: flex;
+}
+
+.container {
+  margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    margin-bottom: 30px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    margin-bottom: 40px;
+  }
+}
+
+#containerAboutPage,
+#containerRealTimeData,
+#containerAboutPageSeasons {
+  margin-bottom: 100px;
+}
+
+.background-svg-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  transform: rotate(180deg);
+  z-index: -1;
+}
+
+.background-svg-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: -1;
+}
+
+footer.footer {
+  position: relative; 
+  width: 100%; 
+  background-color: rgba(43, 79, 139, 1);
+  padding: 10px 20px; 
+  color: aliceblue; 
+  text-align: center;
+}
+
+div#container1, #container2, #container3, #container4{
+  color:white;
+  background: cornflowerblue;
+} 
+
+h3#currentWeatherTitle, h3#currentWeatherTitleTwo, h3#secondDayTitle,  h3#dayFifthTitle {
+  font-size: 1.30rem;
+}
+
+#representativeImage {
+  z-index: -1;
+}
+
+#secondDayDate, #thirdDayDate, #fourthDayDate, #dayFifthDate, #daySixthDate, #daySeventhDate {
+  font-weight: bold;
+}
+
+#fillerContainer{
+  margin-top:248px;
+}
+#fillerContainerTwo {
+  margin-top:374px;
+}
+
+.bg-info {
+  background-color: #355e8b !important;
+}
+
+.bg-secondary {
+  background-color: #355e8b !important;
+}
+
+.bg-primary {
+  background-color: #355e8b !important;
+}
+
+.bg-info h4{
+  text-align: center;
+  margin-top: -7px;
+}
+
+.bg-secondary h4 {
+  text-align: center;
+  margin-top: -7px;
+}
+
+.bg-primary h4 {
+  text-align: center;
+  margin-top: -7px;
+}
+
+#container2 h3 {
+  font-size: 1.30rem;
+}
+
+#container3 h3 {
+  font-size: 1.30rem;
+}
+
+#container4 h3 {
+  font-size: 1.30rem;
+}

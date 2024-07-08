@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./../style/style.css">
+  <script type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js?key=google-maps-api-key&libraries=places"></script>
+  <title>SkySense</title>
+
+  <script type="text/javascript">
+
+    function importFile(url) {
+      return fetch(url)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Failed to fetch file');
+          }
+          return response.text();
+        })
+        .catch(error => {
+          console.error('Error importing file:', error);
+          return '';
+        });
+    }
+
+    async function importHeaderAndFooter() {
+      try {
+        const [headerContent, footerContent] = await Promise.all([
+          importFile('./components/header.html'),
+          importFile('./components/footer.html')
+        ]);
+
+        document.getElementById('header-navbar').innerHTML = headerContent;
+        document.getElementById('footer-placeholder').innerHTML = footerContent;
+
+      } catch (error) {
+        console.error('Error importing header/footer:', error);
+      }
+    }
+
+    function initialize() {
+      var input = document.getElementById('searchTextField');
+      new google.maps.places.Autocomplete(input);
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+ 
+    window.addEventListener('DOMContentLoaded', importHeaderAndFooter);
+
+  </script>
+</head>
+
+<body>
+  <div id="header-navbar"></div>
+  <h1 class="header-for-now"></h1>
+
+  <div class="search-container">
+    <form method="POST">
+      <input id="searchTextField" type="text">
+      <button type="submit" class="search-button">Search</button>
+    </form>
+  </div>
+
+  <div class="container mt-4">
+    <div class="row mb-4">
+      <div class="col-md-6">
+        <div class="container-fluid border border-primary rounded p-3" id="container1">
+          Current Weather
+          <br>
+          <b>Please allow usage of location for geolocation</b>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="container-fluid border border-primary rounded p-3" id="container2">
+          Additional Weather Information
+          <br>
+          <b>Please allow usage of location for geolocation</b>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-md-6">
+        <div class="container-fluid border border-primary rounded p-3" id="container3">
+          Weather for next 3 days
+          <br>
+          <b>Please allow usage of location for geolocation</b>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="container-fluid border border-primary rounded p-3" id="container4">
+          Weather for next additionla days
+          <br>
+          <b>Please allow usage of location for geolocation</b>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-12 mb-4">
+        <div class="bg-primary text-white p-3">
+          <h4>Air Quality Index Scale and Color Legend</h4>
+          <p style="text-align: center;">The table below defines the Air Quality Index scale as defined by the US-EPA 2016 standard</p>
+        </div>
+        <div id='map' style="height: 300px;"></div>
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css">
+        <script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
+        <script>
+          var OSM_URL = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+          var OSM_ATTRIB = '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+          var osmLayer = L.tileLayer(OSM_URL, { attribution: OSM_ATTRIB });
+
+          var WAQI_URL = "https://tiles.waqi.info/tiles/usepa-aqi/{z}/{x}/{y}.png?token=WAQI-TILES-API-KEY";
+          var WAQI_ATTR = 'Air Quality Tiles &copy; <a href="http://waqi.info">waqi.info</a>';
+          var waqiLayer = L.tileLayer(WAQI_URL, { attribution: WAQI_ATTR });
+
+          var map = L.map('map');
+          map.addLayer(osmLayer).addLayer(waqiLayer);
+
+          function setMapViewToCurrentLocation() {
+            if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(function (position) {
+                var latitude = position.coords.latitude;
+                var longitude = position.coords.longitude;
+                map.setView([latitude, longitude], 13);
+              });
+            } else {
+              alert("Geolocation is not supported by this browser.");
+            }
+          }
+
+          setMapViewToCurrentLocation();
+        </script>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-4">
+    <div class="row" id="aqi-table">
+      <div class="col-12 mb-4">
+        <table class="table">
+          <thead>
+            <tr class="row-head">
+              <th scope="col">AQI</th>
+              <th scope="col">Air Pollution Level</th>
+              <th scope="col">Health Implications</th>
+              <th scope="col">Cautionary Statement</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="row-good">
+              <th scope="row">0-50</th>
+              <td>Good</td>
+              <td>Air quality is considered satisfactory, and air pollution poses little or no risk</td>
+              <td>None</td>
+            </tr>
+            <tr class="row-moderate">
+              <th scope="row">51-100</th>
+              <td>Moderate</td>
+              <td>Air quality is okay, but some pollutants might mildly affect very sensitive people</td>
+              <td>People with respiratory conditions like asthma should limit outdoor activity</td>
+            </tr>
+            <tr class="row-unhealthy-sensitive">
+              <th scope="row">101-150</th>
+              <td>Unhealthy for Sensitive Groups</td>
+              <td>Sensitive individuals may be affected, but others likely won't be</td>
+              <td>Those with respiratory issues like asthma should limit outdoor activity</td>
+            </tr>
+            <tr class="row-unhealthy">
+              <th scope="row">151-200</th>
+              <td>Unhealthy
+              </td>
+              <td>Everyone may feel health effects, especially sensitive groups</td>
+              <td>Those with asthma should avoid prolonged outdoor activity; others, especially children, should also limit outdoor time</td>
+            </tr>
+            <tr class="row-very-unhealthy">
+              <th scope="row">201-300</th>
+              <td>Very Unhealthy</td>
+              <td>Health warnings of emergency conditions. The entire population is more likely to be affected</td>
+              <td>Those with asthma should avoid outdoor activity; others, especially children, should limit their time
+                outdoors</td>
+            </tr>
+            <tr class="row-hazardous">
+              <th scope="row">300+</th>
+              <td>Hazardous</td>
+              <td>Health alert: everyone may experience more serious health effects</td>
+              <td>Everyone should avoid all outdoor exertion</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script type="module" src="./../scripts/scripts.js"></script>
+  <script src="../scripts/auth.js"></script>
+  <div id="footer-placeholder"></div>
+</body>
+
+</html>

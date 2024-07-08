@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./../style/style.css">
+
+    <title>SkySense - About</title>
+
+    <script type="text/javascript">
+
+        function importFile(url) {
+            return fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch file');
+                    }
+                    return response.text();
+                })
+                .catch(error => {
+                    console.error('Error importing file:', error);
+                    return '';
+                });
+        }
+
+        async function importHeaderAndFooter() {
+            try {
+                const [headerContent, footerContent] = await Promise.all([
+                    importFile('./components/header.html'),
+                    importFile('./components/footer.html')
+                ]);
+
+                document.getElementById('header-navbar').innerHTML = headerContent;
+                document.getElementById('footer-placeholder').innerHTML = footerContent;
+
+            } catch (error) {
+                console.error('Error importing header/footer:', error);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', importHeaderAndFooter);
+
+    </script>
+</head>
+
+<body>
+    <div id="header-navbar"></div>
+    <div class="container" id="containerAboutPage">
+        <div class="row">
+            <div class="col-md-6 col-12" id="columnOneAboutPage">
+                <h2>About Us</h2>
+                <p>At SkySense, we offer accurate weather insights, empowering your decisions with dependable data.</p>
+                <p>Your weather preparedness matters.</p>
+            </div>
+            <div class="col-md-6 col-12" id="columnTwoAboutPage">
+                <img src="../public/img/sit-flat-design.png" alt="Sit Flat Image" class="img-fluid">
+            </div>
+        </div>
+    </div>
+    <div class="container" id="containerAboutPageSeasons">
+        <h2>Accuracy and Reliability</h2>
+        <hr class="my-2 border-white">
+        <p>SkySense prioritizes accurate and reliable weather information for informed decisions. We're committed to
+            offering trustworthy data that empowers activity planning and weather readiness</p>
+    </div>
+    <div class="container" id="containerRealTimeData">
+        <div class="row">
+            <div class="col-md-4 col-12">
+                <div class="p-3 bg-light border border-secondary rounded">
+                    <img src="../public/img/winter-image-about.jpg" alt="Winter Image" class="img-fluid rounded">
+                </div>
+            </div>
+
+            <div class="col-md-4 col-12">
+                <div class="p-3 bg-light border border-secondary rounded">
+                    <img src="../public/img/autumn-image-about.jpg" alt="Autumn Image" class="img-fluid rounded">
+                </div>
+            </div>
+
+            <div class="col-md-4 col-12">
+                <div class="p-3 bg-light border border-secondary rounded">
+                    <img src="../public/img/summer-image-about.jpg" alt="Summer Image" class="img-fluid rounded-lg">
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="container" id="containerAboutPageSeasons">
+        <h2>Real Time Updates</h2>
+        <hr class="my-2 border-white">
+        <p>We recognize that timely information is crucial, especially when weather conditions are rapidly changing.
+            That's why we are committed to providing real-time updates on our platform</p>
+        <div class="p-3 bg-light border border-secondary rounded" id="realTimeDataImage">
+            <img src="../public/img/real-time-data-image.png" alt="Sit Flat Image" class="img-fluid rounded-lg">
+        </div>
+    </div>
+    <script src="../scripts/auth.js"></script>
+    <div id="footer-placeholder"></div>
+</body>
+
+</html>
